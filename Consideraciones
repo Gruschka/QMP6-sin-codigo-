@@ -1,0 +1,22 @@
+Esta semana no pude hacer el tp por completo, de modo que subi el diagrama de clases de lo que llegue a modelar.
+
+A modo de resumen, encare tanto las notificaciones y sugerencias (el tema de disparar los calculos no entendi bien en que consistia) como observers.
+
+Lo que hice fueron dos clases (Asesor y NotificadorEmail) que implementen la interfaz SuscriptorAlertasClima que los obliga a implementar el metodo
++ procesarAlertaClimatica(AlertaClimatica: unAlerta) para alertar a sus suscriptores correspondientemente segun cualquier alerta climatica que dispare el publicador (MonitorClima). 
+
+Estos suscriptores son una lista de usuarios que pueden registrarse y desregistrarse. 
+
+Entonces la idea es que, por ejemplo, cuando se dispare una alerta, MonitorClima notifique a Asesor y que este haga algo como:
+
+procesarAlertaClimatica(AlertaClimatica: unAlerta){
+  
+  for each suscriptor in suscriptores {
+    unaSugerencia =  sugerenciaDiariaEnBaseAlClima(unAlerta) // las AlertasClimaticas son ENUMS con comportamiento a los cuales les podemos preguntar su sugerencia
+    sugerirA(suscriptor, unaSugerencia)
+  } 
+}
+
+Para el notificador de email el concepto es el mismo.
+
+
